@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 
 from profiles_api import serializers
 
@@ -45,6 +46,7 @@ class HelloApiView(APIView):
         """Handle updating an object"""
         return Response({'method': 'PUT'})
 
+    #patch only works in json string for django
     def patch(self, request, pk=None):
         """Handle a partial update of an object"""
         return Response({'method': 'PATCH'})
@@ -52,3 +54,18 @@ class HelloApiView(APIView):
     def delete(self, request, pk=None):
         """Delete an object"""
         return Response({'method': 'DELETE'})
+
+class HelloViewSet(viewsets.ViewSet):
+    """Test API ViewSet"""
+    def list(self, request):
+        """Returns a hello message"""
+        a_viewset = [
+            'Uses actions (list, create, retrieve, update, partial_u-pdate)',
+            'Auto maps to URLs using Routers',
+            'Provides more functionality with less code',
+        ]
+
+        return Response({
+            'message': 'Hello!',
+            'a_viewset': a_viewset
+        })
