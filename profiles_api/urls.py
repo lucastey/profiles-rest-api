@@ -12,5 +12,6 @@ router.register('profile', views.UserProfileViewSet)
 #when the path search gets here, it will respond with the hello api view
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),
+    path('login/', views.UserLoginApiView.as_view()),
     path('', include(router.urls))
 ]
