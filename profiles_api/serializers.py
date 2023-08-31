@@ -2,6 +2,12 @@ from rest_framework import serializers
 
 from profiles_api import models
 
+
+#Serializers are used to convert complex data types (like Django model instances)
+#into native Python data types, that can be easily rendered into JSON,XML, or other content types
+#the serializer classes also handle deserialization, allowing parsed data to be converted back into complex types after validation
+
+
 class HelloSerializer(serializers.Serializer):
     """Serializes a name field for testing our APIView"""
     #allows us to input a max length 10 character field
@@ -38,3 +44,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
             instance.set_password(password)
  
         return super().update(instance, validated_data)
+
+
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """Serializes profile feed items"""
+
+    class Meta:
+        model = models.ProfileFeedItem
+        fields = ('id', 'user_profile', 'status_text', 'created_on')
+        extra_kwargs = {'user_profile': {'read_only': True}}

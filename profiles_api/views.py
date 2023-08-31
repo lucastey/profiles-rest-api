@@ -11,6 +11,10 @@ from profiles_api import serializers
 from profiles_api import models
 from profiles_api import permissions
 
+#Views.py handles my outgoing HTTP requests and returns my incoming HTTP responses
+#Contains the logic for rendering templates (html files) or returning data in response to API requests
+#The views interact with models to retrieve or modify data and use serializers to convert data to and from various formats
+
 
 # Create your views here.
 class HelloApiView(APIView):

@@ -4,6 +4,11 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 
+#Models.py
+#This is where i define my data models. With each class representing a table in the database
+#I can define fields and their types in these model classes
+#I can also define methods and properties within my models to encapsulate business logic related to the data.
+
 
 class UserProfileManager(BaseUserManager):
     """Manager for user profiles"""
